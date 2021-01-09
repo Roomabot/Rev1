@@ -1,0 +1,55 @@
+{
+  "files" : [ {
+    "remoteURL" : "https://downloads.arduino.cc/libraries/library_index.json.gz",
+    "localPath" : "/home/ubuntu/snap/arduino/51/.arduino15/cache/downloads.arduino.cc/libraries/library_index.json.gz",
+    "eTag" : "bbe0e1dd3b3289f782f1ec504697794b",
+    "md5" : "MD5:bbe0e1dd3b3289f782f1ec504697794b",
+    "createdAt" : "2021-01-09T00:59:32.833545",
+    "cacheControl" : {
+      "maxAge" : 14400,
+      "mustRevalidate" : false,
+      "noCache" : false,
+      "noStore" : false
+    },
+    "expires" : "2021-01-09T04:59:32.833545"
+  }, {
+    "remoteURL" : "https://downloads.arduino.cc/packages/package_index.json.sig",
+    "localPath" : "/home/ubuntu/snap/arduino/51/.arduino15/cache/downloads.arduino.cc/packages/package_index.json.sig",
+    "eTag" : "704ffc1e85d51419342b6930c9b33d0e",
+    "md5" : "MD5:704ffc1e85d51419342b6930c9b33d0e",
+    "createdAt" : "2021-01-09T00:59:31.045051",
+    "cacheControl" : {
+      "maxAge" : 3600,
+      "mustRevalidate" : false,
+      "noCache" : false,
+      "noStore" : false
+    },
+    "expires" : "2021-01-09T01:59:31.045051"
+  }, {
+    "remoteURL" : "https://downloads.arduino.cc/libraries/library_index.json.sig",
+    "localPath" : "/home/ubuntu/snap/arduino/51/.arduino15/cache/downloads.arduino.cc/libraries/library_index.json.sig",
+    "eTag" : "5f706f10165a080153d69060c7b9e63d",
+    "md5" : "MD5:5f706f10165a080153d69060c7b9e63d",
+    "createdAt" : "2021-01-09T00:59:33.902741",
+    "cacheControl" : {
+      "maxAge" : 14400,
+      "mustRevalidate" : false,
+      "noCache" : false,
+      "noStore" : false
+    },
+    "expires" : "2021-01-09T04:59:33.902741"
+  }, {
+    "remoteURL" : "https://downloads.arduino.cc/packages/package_index.json",
+    "localPath" : "/home/ubuntu/snap/arduino/51/.arduino15/cache/downloads.arduino.cc/packages/package_index.json",
+    "eTag" : "49bbc5966849aeba610d68aafdc6276b",
+    "md5" : "MD5:49bbc5966849aeba610d68aafdc6276b",
+    "createdAt" : "2021-01-09T00:59:30.791053",
+    "cacheControl" : {
+      "maxAge" : 3600,
+      "mustRevalidate" : false,
+      "noCache" : false,
+      "noStore" : false
+    },
+    "expires" : "2021-01-09T01:59:30.791053"
+  } ]
+}

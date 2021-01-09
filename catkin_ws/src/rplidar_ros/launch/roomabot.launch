@@ -1,0 +1,13 @@
+<launch>
+ 
+  <node name="rplidarNode"          pkg="rplidar_ros"  type="rplidarNode" />
+  
+  <node name="serial_node"        pkg="rosserial_python"      type="serial_node.py">
+  <param name="port"              type="string"               value="/dev/ttyACM0"/>
+  </node>
+  
+  <node name="slam_gmapping" pkg="gmapping" type="slam_gmapping" output="screen"/>
+  
+  <node name="rviz" pkg="rviz" type="rviz" args="-d $(find rplidar_ros)/rviz/roomabot.rviz"/>
+  
+</launch>
