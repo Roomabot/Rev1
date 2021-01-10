@@ -57,8 +57,14 @@ int main(int argc, char **argv){
 			ROS_INFO("a was pressed: %s", msg.data.c_str());
 			pub.publish(msg);
 		}
+		else if(input==102){//if f is pressed
+			ss << "f";
+			msg.data = ss.str();
+			ROS_INFO("f was pressed: %s", msg.data.c_str());
+			pub.publish(msg);
+		}
 		else{
-			printf("Invalid Input");
+			printf("Invalid Input\n");
 		}
 		ros::spinOnce();
 		loop_rate.sleep();
