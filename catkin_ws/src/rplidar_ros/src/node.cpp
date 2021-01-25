@@ -12,7 +12,7 @@
 #endif
 
 #define DEG2RAD(x) ((x)*M_PI/180.)
-#define LOOPRATE 10
+#define LOOPRATE 100
 
 using namespace rp::standalone::rplidar;
 
