@@ -64,7 +64,7 @@ int main(int argc, char **argv){
 			pub.publish(msg);
 		}
 		else{
-			printf("Invalid Input\n");
+			printf("Invalid Input (w,a,s,d,f)\n");
 		}
 		ros::spinOnce();
 		loop_rate.sleep();

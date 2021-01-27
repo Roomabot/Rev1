@@ -7,5 +7,5 @@
 # new environment variables
 
 # modified environment variables
+export PATH='/opt/ros/noetic/bin:/home/ubuntu/.local/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/snap/bin'
 export PWD='/home/ubuntu/catkin_ws/build'
-export PYTHONPATH="/home/ubuntu/catkin_ws/devel/lib/python3/dist-packages:$PYTHONPATH"

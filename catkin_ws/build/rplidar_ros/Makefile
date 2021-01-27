@@ -168,109 +168,19 @@ depend:
 .PHONY : depend
 
 # Convenience name for target.
-rplidar_ros/CMakeFiles/tf2_msgs_generate_messages_cpp.dir/rule:
-	cd /home/ubuntu/catkin_ws/build && $(MAKE) -f CMakeFiles/Makefile2 rplidar_ros/CMakeFiles/tf2_msgs_generate_messages_cpp.dir/rule
-.PHONY : rplidar_ros/CMakeFiles/tf2_msgs_generate_messages_cpp.dir/rule
+rplidar_ros/CMakeFiles/user_input2.dir/rule:
+	cd /home/ubuntu/catkin_ws/build && $(MAKE) -f CMakeFiles/Makefile2 rplidar_ros/CMakeFiles/user_input2.dir/rule
+.PHONY : rplidar_ros/CMakeFiles/user_input2.dir/rule
 
 # Convenience name for target.
-tf2_msgs_generate_messages_cpp: rplidar_ros/CMakeFiles/tf2_msgs_generate_messages_cpp.dir/rule
+user_input2: rplidar_ros/CMakeFiles/user_input2.dir/rule
 
-.PHONY : tf2_msgs_generate_messages_cpp
+.PHONY : user_input2
 
 # fast build rule for target.
-tf2_msgs_generate_messages_cpp/fast:
-	cd /home/ubuntu/catkin_ws/build && $(MAKE) -f rplidar_ros/CMakeFiles/tf2_msgs_generate_messages_cpp.dir/build.make rplidar_ros/CMakeFiles/tf2_msgs_generate_messages_cpp.dir/build
-.PHONY : tf2_msgs_generate_messages_cpp/fast
-
-# Convenience name for target.
-rplidar_ros/CMakeFiles/tf2_msgs_generate_messages_py.dir/rule:
-	cd /home/ubuntu/catkin_ws/build && $(MAKE) -f CMakeFiles/Makefile2 rplidar_ros/CMakeFiles/tf2_msgs_generate_messages_py.dir/rule
-.PHONY : rplidar_ros/CMakeFiles/tf2_msgs_generate_messages_py.dir/rule
-
-# Convenience name for target.
-tf2_msgs_generate_messages_py: rplidar_ros/CMakeFiles/tf2_msgs_generate_messages_py.dir/rule
-
-.PHONY : tf2_msgs_generate_messages_py
-
-# fast build rule for target.
-tf2_msgs_generate_messages_py/fast:
-	cd /home/ubuntu/catkin_ws/build && $(MAKE) -f rplidar_ros/CMakeFiles/tf2_msgs_generate_messages_py.dir/build.make rplidar_ros/CMakeFiles/tf2_msgs_generate_messages_py.dir/build
-.PHONY : tf2_msgs_generate_messages_py/fast
-
-# Convenience name for target.
-rplidar_ros/CMakeFiles/tf2_msgs_generate_messages_lisp.dir/rule:
-	cd /home/ubuntu/catkin_ws/build && $(MAKE) -f CMakeFiles/Makefile2 rplidar_ros/CMakeFiles/tf2_msgs_generate_messages_lisp.dir/rule
-.PHONY : rplidar_ros/CMakeFiles/tf2_msgs_generate_messages_lisp.dir/rule
-
-# Convenience name for target.
-tf2_msgs_generate_messages_lisp: rplidar_ros/CMakeFiles/tf2_msgs_generate_messages_lisp.dir/rule
-
-.PHONY : tf2_msgs_generate_messages_lisp
-
-# fast build rule for target.
-tf2_msgs_generate_messages_lisp/fast:
-	cd /home/ubuntu/catkin_ws/build && $(MAKE) -f rplidar_ros/CMakeFiles/tf2_msgs_generate_messages_lisp.dir/build.make rplidar_ros/CMakeFiles/tf2_msgs_generate_messages_lisp.dir/build
-.PHONY : tf2_msgs_generate_messages_lisp/fast
-
-# Convenience name for target.
-rplidar_ros/CMakeFiles/tf2_msgs_generate_messages_eus.dir/rule:
-	cd /home/ubuntu/catkin_ws/build && $(MAKE) -f CMakeFiles/Makefile2 rplidar_ros/CMakeFiles/tf2_msgs_generate_messages_eus.dir/rule
-.PHONY : rplidar_ros/CMakeFiles/tf2_msgs_generate_messages_eus.dir/rule
-
-# Convenience name for target.
-tf2_msgs_generate_messages_eus: rplidar_ros/CMakeFiles/tf2_msgs_generate_messages_eus.dir/rule
-
-.PHONY : tf2_msgs_generate_messages_eus
-
-# fast build rule for target.
-tf2_msgs_generate_messages_eus/fast:
-	cd /home/ubuntu/catkin_ws/build && $(MAKE) -f rplidar_ros/CMakeFiles/tf2_msgs_generate_messages_eus.dir/build.make rplidar_ros/CMakeFiles/tf2_msgs_generate_messages_eus.dir/build
-.PHONY : tf2_msgs_generate_messages_eus/fast
-
-# Convenience name for target.
-rplidar_ros/CMakeFiles/actionlib_generate_messages_cpp.dir/rule:
-	cd /home/ubuntu/catkin_ws/build && $(MAKE) -f CMakeFiles/Makefile2 rplidar_ros/CMakeFiles/actionlib_generate_messages_cpp.dir/rule
-.PHONY : rplidar_ros/CMakeFiles/actionlib_generate_messages_cpp.dir/rule
-
-# Convenience name for target.
-actionlib_generate_messages_cpp: rplidar_ros/CMakeFiles/actionlib_generate_messages_cpp.dir/rule
-
-.PHONY : actionlib_generate_messages_cpp
-
-# fast build rule for target.
-actionlib_generate_messages_cpp/fast:
-	cd /home/ubuntu/catkin_ws/build && $(MAKE) -f rplidar_ros/CMakeFiles/actionlib_generate_messages_cpp.dir/build.make rplidar_ros/CMakeFiles/actionlib_generate_messages_cpp.dir/build
-.PHONY : actionlib_generate_messages_cpp/fast
-
-# Convenience name for target.
-rplidar_ros/CMakeFiles/tf2_msgs_generate_messages_nodejs.dir/rule:
-	cd /home/ubuntu/catkin_ws/build && $(MAKE) -f CMakeFiles/Makefile2 rplidar_ros/CMakeFiles/tf2_msgs_generate_messages_nodejs.dir/rule
-.PHONY : rplidar_ros/CMakeFiles/tf2_msgs_generate_messages_nodejs.dir/rule
-
-# Convenience name for target.
-tf2_msgs_generate_messages_nodejs: rplidar_ros/CMakeFiles/tf2_msgs_generate_messages_nodejs.dir/rule
-
-.PHONY : tf2_msgs_generate_messages_nodejs
-
-# fast build rule for target.
-tf2_msgs_generate_messages_nodejs/fast:
-	cd /home/ubuntu/catkin_ws/build && $(MAKE) -f rplidar_ros/CMakeFiles/tf2_msgs_generate_messages_nodejs.dir/build.make rplidar_ros/CMakeFiles/tf2_msgs_generate_messages_nodejs.dir/build
-.PHONY : tf2_msgs_generate_messages_nodejs/fast
-
-# Convenience name for target.
-rplidar_ros/CMakeFiles/actionlib_generate_messages_lisp.dir/rule:
-	cd /home/ubuntu/catkin_ws/build && $(MAKE) -f CMakeFiles/Makefile2 rplidar_ros/CMakeFiles/actionlib_generate_messages_lisp.dir/rule
-.PHONY : rplidar_ros/CMakeFiles/actionlib_generate_messages_lisp.dir/rule
-
-# Convenience name for target.
-actionlib_generate_messages_lisp: rplidar_ros/CMakeFiles/actionlib_generate_messages_lisp.dir/rule
-
-.PHONY : actionlib_generate_messages_lisp
-
-# fast build rule for target.
-actionlib_generate_messages_lisp/fast:
-	cd /home/ubuntu/catkin_ws/build && $(MAKE) -f rplidar_ros/CMakeFiles/actionlib_generate_messages_lisp.dir/build.make rplidar_ros/CMakeFiles/actionlib_generate_messages_lisp.dir/build
-.PHONY : actionlib_generate_messages_lisp/fast
+user_input2/fast:
+	cd /home/ubuntu/catkin_ws/build && $(MAKE) -f rplidar_ros/CMakeFiles/user_input2.dir/build.make rplidar_ros/CMakeFiles/user_input2.dir/build
+.PHONY : user_input2/fast
 
 # Convenience name for target.
 rplidar_ros/CMakeFiles/rplidarNodeClient.dir/rule:
@@ -286,66 +196,6 @@ rplidarNodeClient: rplidar_ros/CMakeFiles/rplidarNodeClient.dir/rule
 rplidarNodeClient/fast:
 	cd /home/ubuntu/catkin_ws/build && $(MAKE) -f rplidar_ros/CMakeFiles/rplidarNodeClient.dir/build.make rplidar_ros/CMakeFiles/rplidarNodeClient.dir/build
 .PHONY : rplidarNodeClient/fast
-
-# Convenience name for target.
-rplidar_ros/CMakeFiles/actionlib_generate_messages_nodejs.dir/rule:
-	cd /home/ubuntu/catkin_ws/build && $(MAKE) -f CMakeFiles/Makefile2 rplidar_ros/CMakeFiles/actionlib_generate_messages_nodejs.dir/rule
-.PHONY : rplidar_ros/CMakeFiles/actionlib_generate_messages_nodejs.dir/rule
-
-# Convenience name for target.
-actionlib_generate_messages_nodejs: rplidar_ros/CMakeFiles/actionlib_generate_messages_nodejs.dir/rule
-
-.PHONY : actionlib_generate_messages_nodejs
-
-# fast build rule for target.
-actionlib_generate_messages_nodejs/fast:
-	cd /home/ubuntu/catkin_ws/build && $(MAKE) -f rplidar_ros/CMakeFiles/actionlib_generate_messages_nodejs.dir/build.make rplidar_ros/CMakeFiles/actionlib_generate_messages_nodejs.dir/build
-.PHONY : actionlib_generate_messages_nodejs/fast
-
-# Convenience name for target.
-rplidar_ros/CMakeFiles/user_input.dir/rule:
-	cd /home/ubuntu/catkin_ws/build && $(MAKE) -f CMakeFiles/Makefile2 rplidar_ros/CMakeFiles/user_input.dir/rule
-.PHONY : rplidar_ros/CMakeFiles/user_input.dir/rule
-
-# Convenience name for target.
-user_input: rplidar_ros/CMakeFiles/user_input.dir/rule
-
-.PHONY : user_input
-
-# fast build rule for target.
-user_input/fast:
-	cd /home/ubuntu/catkin_ws/build && $(MAKE) -f rplidar_ros/CMakeFiles/user_input.dir/build.make rplidar_ros/CMakeFiles/user_input.dir/build
-.PHONY : user_input/fast
-
-# Convenience name for target.
-rplidar_ros/CMakeFiles/actionlib_generate_messages_py.dir/rule:
-	cd /home/ubuntu/catkin_ws/build && $(MAKE) -f CMakeFiles/Makefile2 rplidar_ros/CMakeFiles/actionlib_generate_messages_py.dir/rule
-.PHONY : rplidar_ros/CMakeFiles/actionlib_generate_messages_py.dir/rule
-
-# Convenience name for target.
-actionlib_generate_messages_py: rplidar_ros/CMakeFiles/actionlib_generate_messages_py.dir/rule
-
-.PHONY : actionlib_generate_messages_py
-
-# fast build rule for target.
-actionlib_generate_messages_py/fast:
-	cd /home/ubuntu/catkin_ws/build && $(MAKE) -f rplidar_ros/CMakeFiles/actionlib_generate_messages_py.dir/build.make rplidar_ros/CMakeFiles/actionlib_generate_messages_py.dir/build
-.PHONY : actionlib_generate_messages_py/fast
-
-# Convenience name for target.
-rplidar_ros/CMakeFiles/actionlib_generate_messages_eus.dir/rule:
-	cd /home/ubuntu/catkin_ws/build && $(MAKE) -f CMakeFiles/Makefile2 rplidar_ros/CMakeFiles/actionlib_generate_messages_eus.dir/rule
-.PHONY : rplidar_ros/CMakeFiles/actionlib_generate_messages_eus.dir/rule
-
-# Convenience name for target.
-actionlib_generate_messages_eus: rplidar_ros/CMakeFiles/actionlib_generate_messages_eus.dir/rule
-
-.PHONY : actionlib_generate_messages_eus
-
-# fast build rule for target.
-actionlib_generate_messages_eus/fast:
-	cd /home/ubuntu/catkin_ws/build && $(MAKE) -f rplidar_ros/CMakeFiles/actionlib_generate_messages_eus.dir/build.make rplidar_ros/CMakeFiles/actionlib_generate_messages_eus.dir/build
-.PHONY : actionlib_generate_messages_eus/fast
 
 # Convenience name for target.
 rplidar_ros/CMakeFiles/rplidarNode.dir/rule:
@@ -557,7 +407,7 @@ src/user_input.o: src/user_input.cpp.o
 
 # target to build an object file
 src/user_input.cpp.o:
-	cd /home/ubuntu/catkin_ws/build && $(MAKE) -f rplidar_ros/CMakeFiles/user_input.dir/build.make rplidar_ros/CMakeFiles/user_input.dir/src/user_input.cpp.o
+	cd /home/ubuntu/catkin_ws/build && $(MAKE) -f rplidar_ros/CMakeFiles/user_input2.dir/build.make rplidar_ros/CMakeFiles/user_input2.dir/src/user_input.cpp.o
 .PHONY : src/user_input.cpp.o
 
 src/user_input.i: src/user_input.cpp.i
@@ -566,7 +416,7 @@ src/user_input.i: src/user_input.cpp.i
 
 # target to preprocess a source file
 src/user_input.cpp.i:
-	cd /home/ubuntu/catkin_ws/build && $(MAKE) -f rplidar_ros/CMakeFiles/user_input.dir/build.make rplidar_ros/CMakeFiles/user_input.dir/src/user_input.cpp.i
+	cd /home/ubuntu/catkin_ws/build && $(MAKE) -f rplidar_ros/CMakeFiles/user_input2.dir/build.make rplidar_ros/CMakeFiles/user_input2.dir/src/user_input.cpp.i
 .PHONY : src/user_input.cpp.i
 
 src/user_input.s: src/user_input.cpp.s
@@ -575,7 +425,7 @@ src/user_input.s: src/user_input.cpp.s
 
 # target to generate assembly for a file
 src/user_input.cpp.s:
-	cd /home/ubuntu/catkin_ws/build && $(MAKE) -f rplidar_ros/CMakeFiles/user_input.dir/build.make rplidar_ros/CMakeFiles/user_input.dir/src/user_input.cpp.s
+	cd /home/ubuntu/catkin_ws/build && $(MAKE) -f rplidar_ros/CMakeFiles/user_input2.dir/build.make rplidar_ros/CMakeFiles/user_input2.dir/src/user_input.cpp.s
 .PHONY : src/user_input.cpp.s
 
 # Help Target
@@ -591,18 +441,8 @@ help:
 	@echo "... rebuild_cache"
 	@echo "... edit_cache"
 	@echo "... test"
-	@echo "... tf2_msgs_generate_messages_cpp"
-	@echo "... tf2_msgs_generate_messages_py"
-	@echo "... tf2_msgs_generate_messages_lisp"
-	@echo "... tf2_msgs_generate_messages_eus"
-	@echo "... actionlib_generate_messages_cpp"
-	@echo "... tf2_msgs_generate_messages_nodejs"
-	@echo "... actionlib_generate_messages_lisp"
+	@echo "... user_input2"
 	@echo "... rplidarNodeClient"
-	@echo "... actionlib_generate_messages_nodejs"
-	@echo "... user_input"
-	@echo "... actionlib_generate_messages_py"
-	@echo "... actionlib_generate_messages_eus"
 	@echo "... rplidarNode"
 	@echo "... sdk/src/arch/linux/net_serial.o"
 	@echo "... sdk/src/arch/linux/net_serial.i"

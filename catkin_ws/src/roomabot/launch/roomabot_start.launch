@@ -1,0 +1,33 @@
+<launch>
+ 
+  <node name="dataProcessor"          pkg="roomabot"  type="dataProcessor" />
+  
+  <node name="serial_node"        pkg="rosserial_python"      type="serial_node.py">
+	<param name="port"              type="string"               value="/dev/ttyACM0"/>
+  </node>
+  
+  <node name="slam_gmapping" pkg="gmapping" type="slam_gmapping" output="screen">
+	<param name="sigma" value="0.1"/>
+	<param name="kernelSize" value="1"/>
+	<param name="lstep" value="0.1"/>
+	<param name="astep" value="0.1"/>
+	<param name="srr" value="0.7"/>
+	<param name="srt" value="0.8"/>
+	<param name="str" value="0.7"/>
+	<param name="stt" value="0.8"/>
+	<param name="linearUpdate" value="0.0"/>
+	<param name="angularUpdate" value="0.0"/>
+	<param name="resampleThreshold" value="1"/>
+	<param name="particles" value="100"/>
+	
+	<param name="delta" value="0.05"/>
+	<param name="xmin" value="-20.0"/>
+	<param name="ymin" value="-20.0"/>
+	<param name="xmax" value="20.0"/>
+	<param name="ymax" value="20.0"/>
+	<param name="maxUrange" value="12.0"/>
+	<param name="maxRange" value="11.0"/> 
+	<param name="minimumScore" value="400.0"/>
+  </node>
+  
+</launch>

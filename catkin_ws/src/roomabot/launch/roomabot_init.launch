@@ -1,0 +1,13 @@
+<launch>
+
+  <node name="serviceHandler"          pkg="roomabot"  type="serviceHandler" output="screen"/>
+ 
+  <node name="dataProcessor"          pkg="roomabot"  type="dataProcessor" />
+  
+  <node name="serial_node"        pkg="rosserial_python"      type="serial_node.py">
+	<param name="port"              type="string"               value="/dev/ttyACM0"/>
+  </node>
+  
+  <node name="rviz" pkg="rviz" type="rviz" args="-d $(find roomabot)/rviz/roomabot.rviz"/>
+  
+</launch>

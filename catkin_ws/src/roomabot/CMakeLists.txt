@@ -17,6 +17,17 @@ find_package(catkin REQUIRED COMPONENTS
   std_srvs
   tf2
   tf2_ros
+  message_generation
+)
+
+add_message_files(
+	FILES
+    serviceCommand.msg
+)
+
+generate_messages(
+   DEPENDENCIES
+   std_msgs
 )
 
 include_directories(
@@ -25,13 +36,18 @@ include_directories(
   ${catkin_INCLUDE_DIRS}
 )
 
-catkin_package()
+catkin_package(
+	CATKIN_DEPENDS message_runtime
+)
 
 add_executable(dataProcessor src/dataProcessor.cpp ${RPLIDAR_SDK_SRC})
 target_link_libraries(dataProcessor ${catkin_LIBRARIES})
 
 add_executable(user_input src/user_input.cpp)
 target_link_libraries(user_input ${catkin_LIBRARIES})
+
+add_executable(serviceHandler src/serviceHandler.cpp)
+target_link_libraries(serviceHandler ${catkin_LIBRARIES})
 
 install(TARGETS dataProcessor
   ARCHIVE DESTINATION ${CATKIN_PACKAGE_LIB_DESTINATION}

@@ -178,19 +178,19 @@ void leftEncoderBUpdate(){
 }
 
 void controlCallback(const std_msgs::String& msg){
-  if(strcmp(msg.data,"w")==0){//if arduino recieves instruction to move forward
+  if(strcmp(msg.data,"Forward")==0){//if arduino recieves instruction to move forward
     driveForward();
   }
-  else if(strcmp(msg.data,"s")==0){//if arduino recieves instruction to move backwards
+  else if(strcmp(msg.data,"Back")==0){//if arduino recieves instruction to move backwards
     driveBackward();
   }
-  else if(strcmp(msg.data,"a")==0){//if arduino recieves instruction to move ccw
+  else if(strcmp(msg.data,"CCW")==0){//if arduino recieves instruction to move ccw
     rotateCCW();
   }
-  else if(strcmp(msg.data,"d")==0){//if arduino recieves instruction to move cw
+  else if(strcmp(msg.data,"CW")==0){//if arduino recieves instruction to move cw
     rotateCW();
   }
-  else if(strcmp(msg.data,"f")==0){//if arduino recieves instruction to stop
+  else if(strcmp(msg.data,"Stopped")==0){//if arduino recieves instruction to stop
     stopRobot();
   }
 }
