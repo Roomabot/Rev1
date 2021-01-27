@@ -1,82 +1,104 @@
 #include <ros.h>
 #include <std_msgs/String.h>
 #include <std_msgs/Float32MultiArray.h>
+#include <PID_v1.h>
 
 //constants
 #define MAXTIMEBETWEENINSTRUCTION 200
-#define MAXTIMEBETWEENTRANSFORM 250
+#define MAXTIMEBETWEENTRANSFORM 10 
 
-#define SPEED 100 //0-255
+#define rightMotorPin1 7
+#define rightMotorPin2 8
+#define rightMotorPWM 9
 
-#define rightMotorPin1 4
-#define rightMotorPin2 5
-#define rightMotorPWM 6
+#define leftMotorPin1 4
+#define leftMotorPin2 5
+#define leftMotorPWM 6
 
-#define leftMotorPin1 7
-#define leftMotorPin2 8
-#define leftMotorPWM 9
+#define rightMotorEncoderA 18
+#define rightMotorEncoderB 19
 
-#define rightMotorEncoderA 2
-#define rightMotorEncoderB 3
+#define leftMotorEncoderA 2
+#define leftMotorEncoderB 3
 
-#define leftMotorEncoderA 18
-#define leftMotorEncoderB 19
-
+#define LOWESTSPEED 160
+#define HIGHESTSPEED 100
 
 //global variables
+double SetpointRight, SetpointLeft, InputRight, OutputRight, InputLeft, OutputLeft;
+
+PID myPIDRight(&InputRight, &OutputRight, &SetpointRight, 80, 26, 3, DIRECT);
+PID myPIDLeft(&InputLeft, &OutputLeft, &SetpointLeft, 80, 26, 3, DIRECT);
+
 unsigned long lastTransformUpdate=0;
 
-long rightEncoderTick = 0;
-long leftEncoderTick = 0;
+double rightEncoderTick = 0;
+double leftEncoderTick = 0;
 
 const float wheelDiameter = 0.065;
-const float wheelBase = 0.183;
-const float encoderRevolution = 1800; // number of ticks for 1 revolution
+const float wheelBase = 0.149;
+const float encoderRevolution = 4172; // number of ticks for 1 revolution
 
 float x = 0.0;
 float y = 0.0;
 float theta = 0.0; 
+int driveState=0;
 
 std_msgs::Float32MultiArray pose_estimate;
 
-void driveForward(){
-  digitalWrite(rightMotorPin1, HIGH);
-  digitalWrite(rightMotorPin2, LOW);
+void driveBackward(){
+  driveState=1;
+  SetpointRight = 0.65;
+  SetpointLeft = 0.65;
+  digitalWrite(rightMotorPin1, LOW);
+  digitalWrite(rightMotorPin2, HIGH);
   
   digitalWrite(leftMotorPin1, LOW);
   digitalWrite(leftMotorPin2, HIGH);
 }
 
-void driveBackward(){
+void driveForward(){
+  driveState=1;    
+  SetpointRight = 0.65;
+  SetpointLeft = 0.65;
+  digitalWrite(rightMotorPin1, HIGH);
+  digitalWrite(rightMotorPin2, LOW);
+  
+  digitalWrite(leftMotorPin1, HIGH);
+  digitalWrite(leftMotorPin2, LOW);
+} 
+
+void rotateCW(){
+  driveState=0;
+  SetpointRight = 0.7;
+  SetpointLeft = 0.7;
   digitalWrite(rightMotorPin1, LOW);
   digitalWrite(rightMotorPin2, HIGH);
   
   digitalWrite(leftMotorPin1, HIGH);
   digitalWrite(leftMotorPin2, LOW);
-}
-
-void rotateCW(){
-  digitalWrite(rightMotorPin1, LOW);
-  digitalWrite(rightMotorPin2, HIGH);
-  
-  digitalWrite(leftMotorPin1, LOW);
-  digitalWrite(leftMotorPin2, HIGH);
 }
 
 void rotateCCW(){
+  driveState=0;
+  SetpointRight = 0.7;
+  SetpointLeft = 0.7;
   digitalWrite(rightMotorPin1, HIGH);
   digitalWrite(rightMotorPin2, LOW);
   
-  digitalWrite(leftMotorPin1, HIGH);
-  digitalWrite(leftMotorPin2, LOW);
+  digitalWrite(leftMotorPin1, LOW);
+  digitalWrite(leftMotorPin2, HIGH);
 }
 
 void stopRobot(){
+  driveState=0;
+  SetpointRight = 0.0;
+  SetpointLeft = 0.0;
   digitalWrite(rightMotorPin1, LOW);
-    digitalWrite(rightMotorPin2, LOW);
+  digitalWrite(rightMotorPin2, LOW);
   
   digitalWrite(leftMotorPin1, LOW);
-    digitalWrite(leftMotorPin2, LOW);
+  digitalWrite(leftMotorPin2, LOW);
 }
 
 void rightEncoderAUpdate(){
@@ -156,19 +178,19 @@ void leftEncoderBUpdate(){
 }
 
 void controlCallback(const std_msgs::String& msg){
-  if(strcmp(msg.data,"w")==0){//if arduino recieves instruction to move forward
+  if(strcmp(msg.data,"Forward")==0){//if arduino recieves instruction to move forward
     driveForward();
   }
-  else if(strcmp(msg.data,"s")==0){//if arduino recieves instruction to move backwards
+  else if(strcmp(msg.data,"Back")==0){//if arduino recieves instruction to move backwards
     driveBackward();
   }
-  else if(strcmp(msg.data,"a")==0){//if arduino recieves instruction to move ccw
+  else if(strcmp(msg.data,"CCW")==0){//if arduino recieves instruction to move ccw
     rotateCCW();
   }
-  else if(strcmp(msg.data,"d")==0){//if arduino recieves instruction to move cw
+  else if(strcmp(msg.data,"CW")==0){//if arduino recieves instruction to move cw
     rotateCW();
   }
-  else if(strcmp(msg.data,"f")==0){//if arduino recieves instruction to stop
+  else if(strcmp(msg.data,"Stopped")==0){//if arduino recieves instruction to stop
     stopRobot();
   }
 }
@@ -180,6 +202,22 @@ ros::Publisher pub("/pose_estimate", &pose_estimate);
 
 void updateTransform(){
   float distanceRight, distanceLeft, distanceCenter;
+  
+  //PID update
+  float delta = millis()-lastTransformUpdate; 
+  
+  InputRight = ((abs(rightEncoderTick)/encoderRevolution)/delta)*1000;
+  InputLeft = ((abs(leftEncoderTick)/encoderRevolution)/delta)*1000;
+  myPIDRight.Compute();
+  myPIDLeft.Compute();
+  
+  analogWrite(rightMotorPWM, OutputRight); //ENA pin
+  analogWrite(leftMotorPWM, OutputLeft); //ENA pin
+  
+  pose_estimate.data[3]=InputRight;
+  pose_estimate.data[4]=InputLeft;
+  pose_estimate.data[5]=OutputRight;
+  pose_estimate.data[6]=OutputLeft;
   
   distanceRight = (PI*wheelDiameter)*(rightEncoderTick/encoderRevolution);
   distanceLeft = (PI*wheelDiameter)*(leftEncoderTick/encoderRevolution);
@@ -232,9 +270,16 @@ void setup()
   pinMode(rightMotorPWM, OUTPUT); 
   pinMode(leftMotorPWM, OUTPUT); 
   
+  SetpointRight = 0;
+  SetpointLeft = 0;
+  myPIDRight.SetOutputLimits(30, 255);
+  myPIDRight.SetMode(AUTOMATIC);
+  myPIDLeft.SetOutputLimits(30, 255);
+  myPIDLeft.SetMode(AUTOMATIC);
+  
   //Controlling speed (0 = off and 255 = max speed):
-  analogWrite(rightMotorPWM, SPEED); //ENA pin
-  analogWrite(leftMotorPWM, SPEED); //ENA pin
+  analogWrite(rightMotorPWM, 0); //ENA pin
+  analogWrite(leftMotorPWM, 0); //ENB pin
 
   
   
@@ -242,11 +287,15 @@ void setup()
   nh.subscribe(sub);
   nh.advertise(pub);
 
-  pose_estimate.data = (float*)malloc(sizeof(float)*3);
-  pose_estimate.data_length = 3;
+  pose_estimate.data = (float*)malloc(sizeof(float)*7);
+  pose_estimate.data_length = 7;
   pose_estimate.data[0] = x;
   pose_estimate.data[1] = y;
-  pose_estimate.data[2] = theta;  
+  pose_estimate.data[2] = theta;
+  pose_estimate.data[3] = 0; 
+  pose_estimate.data[4] = 0; 
+  pose_estimate.data[5] = 0; 
+  pose_estimate.data[6] = 0;   
   pub.publish(&pose_estimate);
   lastTransformUpdate=millis();
   
@@ -259,5 +308,4 @@ void loop()
   }
   
   nh.spinOnce();
-  delay(1);
 }

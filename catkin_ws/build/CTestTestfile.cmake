@@ -6,6 +6,8 @@
 # testing this directory and lists subdirectories to be tested as well.
 subdirs("gtest")
 subdirs("slam_gmapping")
-subdirs("rplidar_ros")
+subdirs("map_server")
 subdirs("test")
+subdirs("roomabot")
 subdirs("gmapping")
+subdirs("web-server")

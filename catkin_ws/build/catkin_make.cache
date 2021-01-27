@@ -1,2 +1,2 @@
-gmapping:rplidar_ros:slam_gmapping:test
+gmapping:map_server:roomabot:slam_gmapping:test:web-server
 -DCATKIN_DEVEL_PREFIX=/home/ubuntu/catkin_ws/devel -DCMAKE_INSTALL_PREFIX=/home/ubuntu/catkin_ws/install -G Unix Makefiles

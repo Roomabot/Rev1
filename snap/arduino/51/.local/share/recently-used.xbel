@@ -23,4 +23,14 @@
       </metadata>
     </info>
   </bookmark>
+  <bookmark href="file:///home/ubuntu/snap/arduino/current/Arduino/roomabot_arduino/roomabot_arduino.ino" added="2021-01-17T21:23:21Z" modified="2021-01-17T21:23:48Z" visited="2021-01-17T21:23:21Z">
+    <info>
+      <metadata owner="http://freedesktop.org">
+        <mime:mime-type type="application/octet-stream"/>
+        <bookmark:applications>
+          <bookmark:application name="java" exec="&apos;java %u&apos;" modified="2021-01-17T21:23:48Z" count="2"/>
+        </bookmark:applications>
+      </metadata>
+    </info>
+  </bookmark>
 </xbel>

@@ -132,9 +132,11 @@ if(NOT CMAKE_INSTALL_LOCAL_ONLY)
   # Include the install script for each subdirectory.
   include("/home/ubuntu/catkin_ws/build/gtest/cmake_install.cmake")
   include("/home/ubuntu/catkin_ws/build/slam_gmapping/cmake_install.cmake")
-  include("/home/ubuntu/catkin_ws/build/rplidar_ros/cmake_install.cmake")
+  include("/home/ubuntu/catkin_ws/build/map_server/cmake_install.cmake")
   include("/home/ubuntu/catkin_ws/build/test/cmake_install.cmake")
+  include("/home/ubuntu/catkin_ws/build/roomabot/cmake_install.cmake")
   include("/home/ubuntu/catkin_ws/build/gmapping/cmake_install.cmake")
+  include("/home/ubuntu/catkin_ws/build/web-server/cmake_install.cmake")
 
 endif()
 
