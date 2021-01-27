@@ -47,6 +47,7 @@ add_executable(user_input src/user_input.cpp)
 target_link_libraries(user_input ${catkin_LIBRARIES})
 
 add_executable(serviceHandler src/serviceHandler.cpp)
+add_dependencies(serviceHandler roomabot_generate_messages_cpp)
 target_link_libraries(serviceHandler ${catkin_LIBRARIES})
 
 install(TARGETS dataProcessor
