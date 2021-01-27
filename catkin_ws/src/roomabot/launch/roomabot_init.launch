@@ -8,6 +8,8 @@
 	<param name="port"              type="string"               value="/dev/ttyACM0"/>
   </node>
   
+  <node name="listener"          pkg="web-server"  type="listener.py"/>
+  
   <node name="rviz" pkg="rviz" type="rviz" args="-d $(find roomabot)/rviz/roomabot.rviz"/>
   
 </launch>

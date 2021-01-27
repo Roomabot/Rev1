@@ -34,31 +34,31 @@ int main(int argc, char **argv){
 		input=getchar();
 		fflush(stdin);
 		if(input==119){//if w is pressed
-			ss << "w";
+			ss << "Forward";
 			msg.data = ss.str();
 			ROS_INFO("w was pressed: %s", msg.data.c_str());
 			pub.publish(msg);
 		}
 		else if(input==115){//if s is pressed
-			ss << "s";
+			ss << "Back";
 			msg.data = ss.str();
 			ROS_INFO("s was pressed: %s", msg.data.c_str());
 			pub.publish(msg);
 		}
 		else if(input==100){//if d is pressed
-			ss << "d";
+			ss << "CW";
 			msg.data = ss.str();
 			ROS_INFO("d was pressed: %s", msg.data.c_str());
 			pub.publish(msg);
 		}
 		else if(input==97){//if a is pressed
-			ss << "a";
+			ss << "CCW";
 			msg.data = ss.str();
 			ROS_INFO("a was pressed: %s", msg.data.c_str());
 			pub.publish(msg);
 		}
 		else if(input==102){//if f is pressed
-			ss << "f";
+			ss << "Stopped";
 			msg.data = ss.str();
 			ROS_INFO("f was pressed: %s", msg.data.c_str());
 			pub.publish(msg);

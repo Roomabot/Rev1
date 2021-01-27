@@ -1,6 +1,9 @@
 /dataProcessor
+/listener
+/map_server_1611782526407817607
 /rosout
+/rostopic_4430_1611782427693
 /rviz
 /serial_node
 /serviceHandler
-/talker_4306_1611714451758
+/talker_4605_1611782478342
