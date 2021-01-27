@@ -5,6 +5,7 @@
 #include <stdlib.h>
 #include <stdio.h>
 #include "ros/ros.h"
+#include "ros/package.h"
 #include "roomabot/serviceCommand.h"
 #include "std_msgs/String.h"
 
@@ -22,10 +23,11 @@ void updateConnectionStatus(ros::Publisher *pub){
 	
 	roomabot::serviceCommand msg;
 	msg.command=CONNECTIONSTATUS;
-	
+	std::string path = ros::package::getPath("roomabot") + "/tmp/tmpStatus.txt";
+
 	//checking all active nodes to see if dataProcessing and arduino nodes are up
-	system("rosnode list >/home/ubuntu/catkin_ws/src/roomabot/tmp/tmpStatus.txt 2>/dev/null");
-	std::ifstream file("/home/ubuntu/catkin_ws/src/roomabot/tmp/tmpStatus.txt");
+	system(("rosnode list > " + path +" 2>/dev/null").c_str());
+	std::ifstream file(path);
 	
 	if(file.is_open()){
 		std::string line;
@@ -51,12 +53,14 @@ void updateConnectionStatus(ros::Publisher *pub){
 
 void serviceRequest(const roomabot::serviceCommand::ConstPtr& msg){
 	
+	std::string path = ros::package::getPath("roomabot") + "/tmp/tmpServiceRequest.txt";
+
 	if(msg->command.compare(START)==0){
 		printf("Recieved Start command\n");
 		//closing gmapping, map_server, arduino and dataProcessing nodes
 		//starting arduino, dataProcessing and gmapping node again to reset
-		system("rosnode list >/home/ubuntu/catkin_ws/src/roomabot/tmp/tmpServiceRequest.txt 2>/dev/null");
-		std::ifstream file("/home/ubuntu/catkin_ws/src/roomabot/tmp/tmpServiceRequest.txt");
+		system(("rosnode list >"+ path+ " 2>/dev/null").c_str());
+		std::ifstream file(path);
 		
 		if(file.is_open()){
 			std::string line;
@@ -80,8 +84,8 @@ void serviceRequest(const roomabot::serviceCommand::ConstPtr& msg){
 				
 			}
 		}
-		
-		system("roslaunch roomabot roomabot_start.launch >/home/ubuntu/catkin_ws/src/roomabot/tmp/tmpLaunch.txt 2>&1 &");
+		std::string tmpLaunch = ros::package::getPath("roomabot") + "/tmp/tmpLaunch.txt";	
+		system(("roslaunch roomabot roomabot_start.launch >"+tmpLaunch+" 2>&1 &").c_str());
 		printf("starting nodes again\n");
 		
 		
