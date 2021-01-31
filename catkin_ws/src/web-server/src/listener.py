@@ -41,6 +41,7 @@ import asyncio
 import websockets
 from std_msgs.msg import String
 import pathlib
+from roomabot.msg import serviceCommand
 from nav_msgs.msg import OccupancyGrid 
 import ssl
 PORT = 6001
@@ -62,32 +63,41 @@ def listener():
     rospy.init_node('listener', anonymous=True)
 
     rospy.Subscriber('map', OccupancyGrid, callback)
-
-    # spin() simply keeps python from exiting until this node is stopped
+    rospy.Subscriber('status', serviceCommand, callback)
+    
     # don't need ros spin for since node will keep running the server instance
     # rospy.spin()
 
-async def drive(websocket, path):
-    connected.add(websocket) # add connection to set
-    pub = rospy.Publisher('user_input', String, queue_size=1) 
-    # listen for drive commands
+
+userInputPublisher = rospy.Publisher('user_input', String, queue_size=1) 
+
+async def onUserConnect(websocket, path):
+    # for now, we are not restricting number of UI clients connected
+    # so, each will get all published data
+    connected.add(websocket)
+
+    # listen for any messages from ui
     async for message in websocket:
-        print('Receievd drive: ', message)
-        pub.publish(message)
-        
-    print('exiting--------------')
+        print('Receievd message: ', message)
+        # TODO: refactor
+        if message.command == 'drive':
+            userInputPub.publish(message)
+        if message.command == 'serviceRequest':
+            # parse data
+            print('sending data')
+            # servicePub.publish(message)
+    print('closing for: ', websocket)
 
 def getSSLContext():
     ssl_context = ssl.SSLContext(ssl.PROTOCOL_TLS_SERVER)
     localhost_pem = pathlib.Path(__file__).with_name('mycert.pem')
-    print(localhost_pem)
     ssl_context.load_cert_chain(localhost_pem)
     return ssl_context
 
 if __name__ == '__main__':
     listener()
     ssl_context = getSSLContext()
-    start_server = websockets.serve(drive, ADDRESS, PORT, ssl=ssl_context)
+    start_server = websockets.serve(onUserConnect, ADDRESS, PORT, ssl=ssl_context)
     asyncio.get_event_loop().run_until_complete(start_server)
     print('started server')
     asyncio.get_event_loop().run_forever()
