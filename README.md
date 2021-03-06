@@ -22,7 +22,7 @@ sudo openssl x509 -req -days 1825 -in server_csr.pem -signkey server_key.pem -ou
 sudo chmod +r server_cert.pem
 sudo chmod +r server_key.pem
 ```
-3. Update launch file with ssl certs
+3. Update `rosbridge_websocket.launch` file with ssl certs
  
 Note: `{path}` here is the directory you are in (run `pwd` to find this) 
 ```xml
