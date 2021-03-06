@@ -52,3 +52,4 @@ CATKIN_IGNORE
 
 # data files
 catkin_ws/src/roomabot/tmp/*
+catkin_ws/src/roomabot/maps/*

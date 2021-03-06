@@ -16,6 +16,12 @@
 #define START "Start"
 #define SAVE "Save"
 #define LOAD "Load"
+#define ERR "Error"
+#define MOTOR_ERR1 "1"
+#define MOTOR_ERR2 "2"
+
+//global publisher
+ros::Publisher pub;
 
 void updateConnectionStatus(ros::Publisher *pub){
 	bool dataProcessStatus=false;
@@ -49,6 +55,24 @@ void updateConnectionStatus(ros::Publisher *pub){
 	} 
 	
 	pub->publish(msg);
+}
+
+void errorCallback(const roomabot::serviceCommand::ConstPtr& msg){
+	roomabot::serviceCommand err_msg;
+	err_msg.command=ERR;
+	if(msg->command.compare(ERR)==0){
+		if(msg->arg1.compare("1")==0){
+			err_msg.arg1="1";
+		}
+		else if(msg->arg1.compare("2")==0){
+			err_msg.arg1="2";
+		}
+		
+		pub.publish(msg);
+	}
+	else{
+		printf("unknown command recieved");
+	}
 }
 
 void serviceRequest(const roomabot::serviceCommand::ConstPtr& msg){
@@ -126,7 +150,8 @@ int main(int argc, char **argv){
 	ros::init(argc, argv, "serviceHandler");
 	ros::NodeHandle nh;
 	ros::Subscriber sub = nh.subscribe<roomabot::serviceCommand>("/service_request",10, serviceRequest);
-	ros::Publisher pub = nh.advertise<roomabot::serviceCommand>("/status", 1);
+	ros::Subscriber error_sub = nh.subscribe<roomabot::serviceCommand>("/errors",10, errorCallback);
+	pub = nh.advertise<roomabot::serviceCommand>("/status", 1);
 	ros::Rate loop_rate(LOOPRATE);
 	
 	double now,last;
